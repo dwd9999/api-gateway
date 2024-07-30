@@ -1,6 +1,19 @@
 spring:
   application:
     name: api-gateway
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: vue
+            uri: http://vue:80
+            predicates:
+              - Path=/**
+          - id: mypc-service
+            uri: http://mypc-service:8080
+            predicates:
+              - Path=/api/v1/parts/**
+              - Path=/api/v1/pc/**
 
 server:
-  port: 8080
+  port: 808
