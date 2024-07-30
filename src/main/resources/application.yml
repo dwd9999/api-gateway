@@ -6,7 +6,7 @@ spring:
       mvc:
         routes:
           - id: vue
-            uri: http://vue:80
+            uri: http://vue:5173
             predicates:
               - Path=/**
           - id: mypc-service
@@ -16,4 +16,4 @@ spring:
               - Path=/api/v1/pc/**
 
 server:
-  port: 808
+  port: 8080
