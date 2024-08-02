@@ -3,17 +3,21 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-      mvc:
-        routes:
-          - id: vue
-            uri: http://vue:5173
-            predicates:
-              - Path=/**
-          - id: mypc-service
-            uri: http://mypc-service:8080
-            predicates:
-              - Path=/api/v1/parts/**
-              - Path=/api/v1/pc/**
+      routes:
+        - id: jenkins
+          uri: http://jenkins:8080
+          predicates:
+            - Path=/jenkins
+        - id: mypc-service
+          uri: http://mypc-service:8080
+          predicates:
+            - Path=/api/v1/parts/**, /api/v1/pc/**
+
+
 
 server:
   port: 8080
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
